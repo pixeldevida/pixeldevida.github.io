@@ -1,0 +1,914 @@
+/* Importación de fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/* Nueva fuente para el saludo */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Fondo con degradado sutil (Default) */
+    background: linear-gradient(135deg, #FFC0CB, #ADD8E6, #8A2BE2);
+    /* Rosa, Azul Claro, Morado */
+    color: #333;
+    position: relative;
+    overflow-y: auto;
+    /* Permite scroll vertical en el body si es necesario */
+    overflow-x: hidden;
+    /* Evita el scroll horizontal */
+    transition: background-color 0.5s ease;
+    /* Transición suave para el cambio de fondo */
+}
+
+/* Fondo oscuro para el día de cumpleaños */
+
+body.birthday-background {
+    background-color: #000 !important;
+    /* Fondo negro sólido, !important para asegurar que prevalece */
+    background-image: none !important;
+    /* Elimina cualquier gradiente o imagen de fondo existente */
+    /* Asegúrate de que no haya otras propiedades de fondo que lo contradigan */
+}
+
+
+/* Contenedor principal de la página (la tarjeta blanca) */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    z-index: 10;
+    /* Asegura que el contenido principal esté sobre las animaciones */
+    max-height: 95vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    /* Añadido padding para que el contenido no pegue a los bordes */
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+/* Título principal */
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #8A2BE2;
+    /* Un tono de morado bonito */
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+/* Contador regresivo */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.time-unit {
+    background-color: #FFF0F5;
+    /* Rosa claro */
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    min-width: 70px;
+}
+
+.time-unit span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #FF69B4;
+    /* Rosa vibrante */
+    display: block;
+}
+
+.time-unit p {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.greeting-message {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Estilos para la sección de contenido diario (index.html) */
+.daily-title {
+    font-family: 'Playfair Display', serif;
+    color: #CD5C5C;
+    /* Coral suave */
+    font-size: 2.2em;
+    margin-bottom: 25px;
+}
+
+.daily-message-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #F8F8FF;
+    /* Un blanco azulado muy suave */
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.daily-phrase {
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #333;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.access-lost-days {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+}
+
+.access-lost-days a {
+    color: #8A2BE2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.access-lost-days a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para resaltar texto (usar con <span>) */
+.highlight {
+    font-weight: bold;
+    color: #FF4500;
+    /* Naranja rojizo para resaltar */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+}
+
+/* Clases de utilidad */
+.hidden {
+    display: none !important;
+}
+
+
+/* Estilos para el pop-up de mensaje especial */
+.special-message-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    text-align: center;
+    max-width: 90%;
+    box-sizing: border-box;
+    width: 90%;
+    z-index: 1000;
+    /* Asegura que esté por encima de todo */
+    border: 3px solid #FF69B4;
+}
+
+#special-message-text {
+    font-size: 1.5em;
+    color: #8A2BE2;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+#close-special-message {
+    background-color: #ADD8E6;
+    /* Azul claro */
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#close-special-message:hover {
+    background-color: #87CEEB;
+    /* Azul más oscuro al pasar el ratón */
+}
+
+/* --- Estilos para lost_days.html --- */
+#unlock-sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.unlock-section {
+    background-color: #F8F8FF;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    text-align: center;
+}
+
+.unlock-section h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8A2BE2;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.unlock-section input[type="text"] {
+    padding: 12px 18px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    width: calc(100% - 160px);
+    max-width: 250px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    /* Asegura alineación vertical */
+}
+
+.unlock-section button {
+    background-color: #FF69B4;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    vertical-align: middle;
+    /* Asegura alineación vertical */
+}
+
+.unlock-section button:hover {
+    background-color: #E05CA0;
+}
+
+.unlock-section .error-message {
+    color: #FF0000;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.unlocked-days-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.unlocked-day-card {
+    background-color: #FFF0F5;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.unlocked-day-card h4 {
+    font-family: 'Playfair Display', serif;
+    color: #CD5C5C;
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.unlocked-day-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    font-style: italic;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 20px;
+    background-color: #ADD8E6;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #87CEEB;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .countdown-timer {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .time-unit {
+        padding: 10px 15px;
+        min-width: 70px;
+    }
+
+    .time-unit span {
+        font-size: 2.2em;
+    }
+
+    .daily-title {
+        font-size: 1.8em;
+    }
+
+    .unlock-section input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .unlock-section button {
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .unlock-section h3 {
+        font-size: 1.5em;
+    }
+}
+
+/* --- ANIMACIONES GLOBALES (PARA EL FONDO) --- */
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Permite hacer clic a través de las animaciones */
+    z-index: 0;
+    /* ASEGURA QUE ESTÉ EN EL FONDO, DEBAJO DEL CONTENEDOR PRINCIPAL */
+    overflow: hidden;
+    /* Evita que las animaciones causen barras de desplazamiento */
+}
+
+/* Estrellas (sutiles para fondos) */
+.star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(255, 251, 36, 0.8);
+    /* Blanco para contraste */
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Nubes */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    /* Nubes más transparentes */
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: moveClouds 30s linear infinite;
+}
+
+.cloud:nth-child(1) {
+    width: 80px;
+    height: 30px;
+    top: 10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.cloud:nth-child(2) {
+    width: 120px;
+    height: 40px;
+    top: 20%;
+    left: -20%;
+    animation-delay: 7s;
+}
+
+.cloud:nth-child(3) {
+    width: 90px;
+    height: 35px;
+    top: 15%;
+    left: -5%;
+    animation-delay: 14s;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 70%;
+    height: 70%;
+    top: -30%;
+    left: -20%;
+}
+
+.cloud::after {
+    width: 60%;
+    height: 60%;
+    top: -30%;
+    right: -20%;
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 100%));
+    }
+}
+
+/* Hojas cayendo */
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #8B4513;
+    /* Marrón */
+    border-radius: 0 50% 50% 50%;
+    /* Forma de hoja */
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: fallLeaves 10s linear infinite;
+}
+
+.leaf:nth-child(odd) {
+    background-color: #DAA520;
+}
+
+/* Algunos tonos más dorados */
+.leaf:nth-child(even) {
+    background-color: #CD5C5C;
+}
+
+/* Algunos tonos más rojizos */
+
+@keyframes fallLeaves {
+    0% {
+        transform: translate(0, -10%) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(calc(var(--leaf-x) * 1px), 110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Confeti (para el día del cumpleaños) */
+@keyframes fallConfetti {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Corazones Flotantes */
+.heart {
+    top: 500px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FF69B4;
+    /* Rosa fuerte */
+    transform: rotate(-45deg);
+    animation: floatHeart 10s ease-out infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FF69B4;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translate(var(--heart-x), 0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(var(--heart-x), -100vh) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+/* Partículas Brillantes (Sparkles) - Tamaño ajustado */
+.sparkle {
+    position: absolute;
+    width: 5px;
+    /* Ajustado de 50px a 5px */
+    height: 5px;
+    /* Ajustado de 50px a 5px */
+    background-color: #000080;
+    /* Azul Naval */
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.7);
+    animation: sparkleFade 3s ease-out infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes sparkleFade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Burbujas Suaves */
+.bubble {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(128, 223, 255, 0.733);
+    /* Azul claro semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    animation: floatBubble 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatBubble {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(var(--bubble-dx), var(--bubble-dy));
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(0, -100vh);
+        opacity: 0;
+    }
+}
+
+/* Rayos de Luz / Aura - Color ajustado a azul naval */
+.light-ray {
+    position: absolute;
+    background: radial-gradient(circle, rgba(99, 245, 255, 0.404) 0%, rgba(0, 0, 128, 0) 70%);
+    /* Azul naval semi-transparente */
+    border-radius: 75%;
+    animation: pulseLight 5s ease-in-out infinite alternate,
+        moveLight 10s linear infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes pulseLight {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+}
+
+@keyframes moveLight {
+    0% {
+        transform: translate(var(--light-x-start), var(--light-y-start));
+    }
+
+    100% {
+        transform: translate(var(--light-x-end), var(--light-y-end));
+    }
+}
+
+/* --- Nueva Alternativa: Estrellas Fugaces 'Trail Stars' --- */
+.trail-star {
+    position: absolute;
+    width: 2px;
+    /* Grosor de la "cola" */
+    height: 30px;
+    /* Longitud de la "cola" */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0));
+    /* Transparente -> Brillante -> Transparente */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    /* Para que estén sobre el fondo */
+    transform-origin: top center;
+    /* Punto de rotación para la cola */
+    animation: moveTrailStar 5s linear infinite;
+}
+
+@keyframes moveTrailStar {
+    0% {
+        transform: translate(var(--start-x), var(--start-y)) rotate(45deg);
+        /* Inician fuera abajo-izquierda, rotadas */
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    /* Se hacen visibles */
+    95% {
+        opacity: 1;
+    }
+
+    /* Permanecen visibles */
+    100% {
+        transform: translate(var(--end-x), var(--end-y)) rotate(45deg);
+        /* Terminan fuera arriba-derecha, rotadas */
+        opacity: 0;
+    }
+}
+
+/* Flores / Pétalos Cayendo */
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #FFC0CB;
+    /* Rosa claro, como un pétalo */
+    border-radius: 50% 0 50% 0;
+    animation: fallPetal 10s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fallPetal {
+    0% {
+        transform: translate(var(--petal-x), -10vh) rotate(var(--petal-rot-start));
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(var(--petal-x), 110vh) rotate(var(--petal-rot-end));
+        opacity: 0;
+    }
+}
+
+/* Líneas de Energía / Movimiento - Color ajustado */
+.energy-line {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, rgba(128, 0, 128, 0), rgba(128, 0, 128, 0.8), rgba(128, 0, 128, 0));
+    /* Púrpura sutil */
+    opacity: 0;
+    animation: flowEnergy 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes flowEnergy {
+    0% {
+        transform: translate(var(--line-x-start), var(--line-y-start)) rotate(var(--line-rot-start));
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(var(--line-x-end), var(--line-y-end)) rotate(var(--line-rot-end));
+        opacity: 0;
+    }
+}
+
+.birthday-greeting {
+    font-family: 'Lobster', cursive;
+    /* O 'Pacifico', cursive; */
+    font-size: 3.5em;
+    color: #FF69B4;
+    -webkit-text-stroke: 1px rgb(69, 159, 248);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    /* Dependiendo de la fuente, a veces no es necesario */
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 20px;
+    /* Considera añadir un brillo más intenso para que resalte en el fondo oscuro */
+    text-shadow:
+        0 0 10px #FF69B4,
+        /* Brillo del mismo color */
+        0 0 20px #FF69B4,
+        0 0 30px #459FF8,
+        /* Brillo del color del borde */
+        0 0 40px #459FF8;
+    /* O el efecto neonGlow que te di en el mensaje anterior si quieres más dinamismo */
+}
+
+/* --- Estilos para Fuegos Artificiales CSS --- */
+.firework {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    /* Centrar la explosión */
+    pointer-events: none;
+    z-index: 4;
+    /* Por encima del fondo, debajo del contenido principal */
+}
+
+/* Animación del "núcleo" que sube antes de explotar */
+.firework::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 0;
+    background-color: white;
+    /* Color del rastro inicial */
+    opacity: 1;
+    animation: fireworkLaunch 0.8s ease-out forwards;
+    /* Ajustado a 0.8s */
+}
+
+/* Explosión */
+.firework.explode::before {
+    animation: none;
+    /* Detener la animación de lanzamiento */
+    content: none;
+    /* Eliminar el rastro */
+}
+
+/* La magia de los "pétalos" o chispas */
+.firework.explode {
+    animation: fireworkExplode 0.7s ease-out forwards;
+}
+
+/* Variaciones de color para las explosiones */
+.firework.red {
+    background-color: red;
+}
+
+.firework.blue {
+    background-color: blue;
+}
+
+.firework.green {
+    background-color: green;
+}
+
+.firework.yellow {
+    background-color: yellow;
+}
+
+/* Puedes añadir más colores si quieres, ej. .firework.pink, .firework.purple */
+
+
+@keyframes fireworkLaunch {
+    0% {
+        height: 0;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    100% {
+        height: 100px;
+        opacity: 1;
+        transform: translateX(-50%) translateY(-100px);
+    }
+}
+
+@keyframes fireworkExplode {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+        box-shadow:
+            0 0 10px 10px rgba(255, 255, 0, 0.5),
+            /* Brillo central amarillo */
+            50px -50px 0 0 rgba(255, 0, 0, 0.8),
+            /* Chispa roja */
+            -50px -50px 0 0 rgba(0, 255, 0, 0.8),
+            /* Chispa verde */
+            50px 50px 0 0 rgba(0, 0, 255, 0.8),
+            /* Chispa azul */
+            -50px 50px 0 0 rgba(255, 165, 0, 0.8),
+            /* Chispa naranja */
+            0 70px 0 0 rgba(255, 255, 255, 0.8),
+            /* Chispa blanca */
+            70px 0 0 0 rgba(128, 0, 128, 0.8),
+            /* Chispa morada */
+            -70px 0 0 0 rgba(0, 255, 255, 0.8);
+        /* Chispa cian */
+    }
+}

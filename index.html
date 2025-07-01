@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Un Detalle Especial Para Ti</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <section id="countdown-section" class="section">
+        <h1>¡El Gran Día Se Acerca!</h1>
+        <div id="countdown" class="countdown-timer">
+          <div class="time-unit">
+            <span id="days">00</span>
+            <p>Días</p>
+          </div>
+          <div class="time-unit">
+            <span id="hours">00</span>
+            <p>Horas</p>
+          </div>
+          <div class="time-unit">
+            <span id="minutes">00</span>
+            <p>Minutos</p>
+          </div>
+          <div class="time-unit">
+            <span id="seconds">00</span>
+            <p>Segundos</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="daily-content-section" class="section hidden">
+        <h2 id="daily-title" class="daily-title"></h2>
+        <div id="daily-message-container" class="daily-message-container">
+          <p id="daily-phrase" class="daily-phrase"></p>
+          <p class="access-lost-days">
+            ¿Te perdiste algún día? Visita
+            <a href="pastdays.html">esta página</a> para recuperarlos.
+          </p>
+        </div>
+      </section>
+
+      <div id="animation-container" class="animation-container"></div>
+      <div id="special-message-popup" class="special-message-popup hidden">
+        <p id="special-message-text"></p>
+        <button id="close-special-message">Entendido</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

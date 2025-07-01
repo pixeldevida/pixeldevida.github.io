@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Días Pasados</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body id="lost-days-page">
+    <div class="container">
+      <h1>Recupera los Días Perdidos</h1>
+      <p class="greeting-message">
+        Aquí puedes volver a ver los mensajes y sorpresas de los días que te
+        hayas perdido. Ingresa la palabra clave de cada sección para desbloquear
+        los días correspondientes.
+      </p>
+
+      <section id="lost-days-section" class="section">
+        <div id="unlock-sections-container">
+          <div class="unlock-section" id="section-1">
+            <h3>¿Primer nombre de las mascotas de BTS?</h3>
+            <input
+              type="text"
+              id="password-input-1"
+              placeholder="Palabra clave..."
+            />
+            <button data-section="1" class="unlock-section-button">
+              Desbloquear Días
+            </button>
+            <p class="error-message hidden" id="error-message-1">
+              Palabra clave incorrecta. ¡Intenta de nuevo!
+            </p>
+            <div class="unlocked-days-list hidden" id="unlocked-days-1"></div>
+          </div>
+
+          <div class="unlock-section" id="section-2">
+            <h3>¿Fecha de la primera vez que nos vimos?  (DD/MM/YY)</h3>
+            <input
+              type="text"
+              id="password-input-2"
+              placeholder="Palabra clave..."
+            />
+            <button data-section="2" class="unlock-section-button">
+              Desbloquear Días
+            </button>
+            <p class="error-message hidden" id="error-message-2">
+              Palabra clave incorrecta. ¡Intenta de nuevo!
+            </p>
+            <div class="unlocked-days-list hidden" id="unlocked-days-2"></div>
+          </div>
+
+          <div class="unlock-section" id="section-3">
+            <h3>¿Cuál es tu anime favorito?</h3>
+            <input
+              type="text"
+              id="password-input-3"
+              placeholder="Palabra clave..."
+            />
+            <button data-section="3" class="unlock-section-button">
+              Desbloquear Días
+            </button>
+            <p class="error-message hidden" id="error-message-3">
+              Palabra clave incorrecta. ¡Intenta de nuevo!
+            </p>
+            <div class="unlocked-days-list hidden" id="unlocked-days-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <a href="index.html" class="back-link">Volver al contador principal</a>
+    </div>
+
+    <div id="animation-container" class="animation-container"></div>
+    <div id="special-message-popup" class="special-message-popup hidden">
+      <p id="special-message-text"></p>
+      <button id="close-special-message">Entendido</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
