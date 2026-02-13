@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para ti</title>
+
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  overflow:hidden;
+}
+
+.screen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:24px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 1s ease;
+}
+
+.screen.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* INICIO */
+#start{
+  background:#050615;
+  color:#fff;
+}
+
+#start .tap{
+  padding:14px 20px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+
+/* TYPEWRITER */
+#type{
+  background:#050615;
+  color:#fff;
+}
+
+#typed{
+  font-size:20px;
+  white-space:pre-line;
+}
+
+.star{
+  position: fixed;
+  font-size: 26px;      
+  font-weight: 600;
+  z-index: 9999;              
+  pointer-events: none;
+  animation: starfade 2.2s forwards;
+  color: rgba(255,255,255,.95);
+}
+
+
+@keyframes starfade{
+  0%{
+    opacity:0;
+    transform: scale(.6) translateY(6px);
+  }
+  25%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    transform: scale(1.3) translateY(-6px);
+  }
+}
+
+
+/* IMAGE */
+#image{
+  background:#070810;
+}
+
+#image img{
+  width:80%;
+  max-width:320px;
+  border-radius:18px;
+  animation:float 3s infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* TAP */
+#tap{
+  background:#050615;
+  color:#fff;
+  font-size:18px;
+}
+
+/* FINAL MENSAJE 3 */
+#final{
+  background:#050615;
+  color:#fff;
+}
+
+.petals{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.petal{
+  position:absolute;
+  top:-10vh;
+  font-size:22px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform: translateY(120vh) rotate(90deg);
+    opacity:.9;
+  }
+}
+
+/* MENSAJE 4 */
+#valentine{
+  background:#1a0f14;
+  color:#f2c6cf;
+}
+
+#valentine .heart{
+  font-size:64px;
+}
+
+#valentine .big{
+  font-size:26px;
+  font-weight:700;
+}
+
+#valentine .small{
+  margin-top:6px;
+  font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<section id="start" class="screen active">
+  <div class="tap">Toca la pantalla para iniciar esta experiencia</div>
+</section>
+
+<section id="type" class="screen">
+  <div id="typed"></div>
+</section>
+
+<section id="image" class="screen">
+  <img src="corazon.gif" alt="">
+</section>
+
+<section id="tap" class="screen">
+  <div>
+    Lo que sigue también es para ti…<br>
+    vamos, toca la pantalla.
+  </div>
+</section>
+
+<section id="final" class="screen">
+  <div class="petals" id="petals"></div>
+  <div style="font-size:20px; white-space:pre-line;">
+    No quería dejar pasar este momento.<br>
+    Solo quería que supieras<br>
+    que me importas y te considero más de lo que suelo decir.
+  </div>
+</section>
+
+<section id="valentine" class="screen">
+  <div>
+    <div class="heart">❤️</div>
+    <div class="big">Quiero que seas mi San Valentín</div>
+    <div class="small">este y todos los que vengan</div>
+  </div>
+</section>
+
+<script>
+const screens=["start","type","image","tap","final","valentine"];
+const show=id=>{
+  screens.forEach(s=>document.getElementById(s).classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+};
+
+const text=`No sabía cómo decirte esto sin que se sintiera simple,
+así que decidí hacerlo de una forma un poco distinta.
+
+Porque hay personas que merecen algo más que palabras rápidas.`;
+
+let i=0;
+function typeText(){
+  if(i<text.length){
+    typed.textContent+=text[i];
+    spawnStar();
+    i++;
+    setTimeout(typeText,55);
+  }else{
+    setTimeout(()=>show("image"),1600);
+    setTimeout(()=>show("tap"),6500);
+  }
+}
+
+function spawnStar(){
+  const star=document.createElement("div");
+  star.className="star";
+  star.textContent=["✴︎","★","✦","☆","✮","✯"][Math.floor(Math.random()*3)];
+  star.style.left=Math.random()*100+"vw";
+  star.style.top=Math.random()*100+"vh";
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),1800);
+}
+
+function startPetals(){
+  const wrap=document.getElementById("petals");
+  const flowers=["🌸","🌷","🌹","🌺","🌻","🌼"];
+
+  for(let i=0;i<32;i++){
+    const p=document.createElement("div");
+    p.className="petal";
+    p.textContent=flowers[Math.floor(Math.random()*flowers.length)];
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=9+Math.random()*7+"s";
+    p.style.animationDelay=Math.random()*3+"s";
+    wrap.appendChild(p);
+  }
+}
+
+start.onclick=()=>{
+  show("type");
+  setTimeout(typeText,500);
+};
+
+tap.onclick=()=>{
+  show("final");
+  startPetals();
+  setTimeout(()=>show("valentine"),7500);
+  setTimeout(()=>{
+    window.location.href="https://music.youtube.com/watch?v=qYnm4cGdHPs&si=U4IPVDDS2r1AinTz";
+  },12000);
+};
+</script>
+
+</body>
+</html>
